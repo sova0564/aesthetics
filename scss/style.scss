@@ -1,0 +1,472 @@
+@mixin text {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 32px;
+}
+
+@mixin flex_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin button {
+  width: 219px;
+  height: 59px;
+  background: #4b6049;
+  color: #fffbf5;
+  font-weight: 400;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition-property: margin;
+  transition-duration: 0.6s;
+  margin: 12px 12px 0 0;
+}
+
+@mixin button_hover {
+  margin: 0 0 12px 12px;
+  transition-property: margin;
+  transition-duration: 0.6s;
+}
+
+@mixin button_after {
+  width: 216px;
+  height: 56px;
+  border: 1.5px solid #484847;
+  margin: 0 0 12px 12px;
+  position: absolute;
+  content: "";
+  z-index: -1;
+  transition-property: margin;
+  transition-duration: 0.7s;
+}
+
+@mixin button_hover_after {
+  transition-property: margin;
+  transition-duration: 0.7s;
+  margin: 0 0 0 0;
+}
+body {
+  font-family: "Mukta", sans-serif;
+  // font-family: 'Poiret One', cursive;
+  font-size: 400;
+  width: 1920px;
+  color: #484847;
+}
+
+h1 {
+  text-indent: -9999px;
+}
+
+.button {
+  @include button();
+}
+
+.button::after {
+  @include button_after();
+}
+
+.button:hover {
+  @include button_hover();
+}
+
+.button:hover::after {
+  @include button_hover_after();
+}
+
+#myBtn {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Фиксированное / липкое положение */
+  top: 270px; /* Поместите кнопку в нижней части страницы */
+  right: 343px; /* Разместить кнопку 30 пикселей от правого */
+  z-index: 99; /* Убедитесь, что он не перекрывается */
+  cursor: pointer; /* Добавить указатель мыши при наведении */
+  padding: 15px; /* Немного отступов */
+}
+
+.logo {
+  width: 246px;
+  height: 144px;
+}
+
+.header_wrap {
+  max-width: 1074px;
+  height: 144px;
+  margin: 0 auto;
+  @include flex_row();
+}
+
+.header_nav {
+  @include flex_row();
+  width: 564px;
+  border-bottom: 0.5px solid #4b6049;
+
+  .nav_item {
+    color: #484847;
+    @include text();
+  }
+  .nav_item:hover {
+    border-top: 0.5px solid #4b6049;
+  }
+}
+
+.header_icon {
+  @include flex_row();
+  gap: 24px;
+
+  .icon_size {
+    display: flex;
+
+    .icon_cabinet {
+      background-image: url(../images/cabinet_default.png);
+      background-position: center;
+      width: 40px;
+      height: 40px;
+      transition: background-image 300ms;
+    }
+    .icon_cabinet:hover {
+      background-image: url(../images/cabinet_hover.png);
+    }
+
+    .icon_favorite {
+      background-image: url(../images/favorite_default.png);
+      background-position: center;
+      width: 40px;
+      height: 40px;
+      transition: background-image 300ms;
+    }
+    .icon_favorite:hover {
+      background-image: url(../images/favorite_hover.png);
+    }
+
+    .icon_basket {
+      background-image: url(../images/basket_default.png);
+      background-position: center;
+      width: 39px;
+      height: 39px;
+      transition: background-image 300ms;
+    }
+    .icon_basket:hover {
+      background-image: url(../images/basket_hover.png);
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+.first {
+  background-image: url(../images/woman_leaf_main.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  display: flex;
+  height: 804px;
+}
+
+.first_wrap {
+  width: 600px;
+  height: 653px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 423px;
+  margin-top: 75px;
+
+  .first_title {
+    font-family: "Poiret One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 70px;
+  }
+
+  .first_desc {
+    @include text();
+    width: 505px;
+  }
+}
+
+.second {
+  background-image: url(../images/moisturizing_serum_normal_skin.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  display: flex;
+  height: 1169px;
+  position: relative;
+}
+
+.second_wrap {
+  .second_title {
+    font-family: "Poiret One";
+    font-size: 60px;
+    line-height: 70px;
+    margin: 78px 0 0 216px;
+  }
+
+  .second_desc {
+    font-size: 40px;
+    line-height: 49px;
+    width: 429px;
+    margin: 58px 0 0 423px;
+  }
+
+  .second_radio {
+    display: flex;
+    position: absolute;
+    bottom: 120px;
+    margin: 0 auto;
+    left: 50%;
+
+    .radio {
+      display: flex;
+      gap: 20px;
+
+      .radio_item1 {
+        transition: background-image 300ms;
+      }
+      .radio_item1:hover {
+        background-image: url(../images/radio_button_checked.png);
+      }
+
+      // .radio_item2 {
+      //   opacity: 1;
+      //   transition: background-image 300ms;
+      // }
+      // .radio_item2:hover {
+      //   background-image: url(../images/radio_button_unchecked.png);
+      // }
+    }
+  }
+
+  .second_button {
+    position: absolute;
+    bottom: 0;
+    left: 46.5%;
+  }
+}
+
+.third {
+  width: 1074px;
+  height: 1675px;
+  padding-top: 100px;
+}
+
+.third_center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 1375px;
+  margin-bottom: 100px;
+}
+
+.third_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .description_wrap {
+    width: 522px;
+    height: 347px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .third_title {
+      font-size: 40px;
+      line-height: 49px;
+      margin-bottom: 12px;
+    }
+
+    .third_desc {
+      font-size: 25px;
+      line-height: 32px;
+    }
+  }
+}
+
+.third_button {
+  display: flex;
+  justify-content: center;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.button2 {
+  font-size: 20px;
+  line-height: 24px;
+  color: #484847;
+  border: 1.5px solid #484847;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  width: 200px;
+  position: relative;
+
+  .button_arrow2 {
+    position: absolute;
+    background-image: url(../images/button_arrow.png);
+    width: 70px;
+    height: 10px;
+    left: 165px;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+  }
+
+  .button_arrow_down {
+    position: absolute;
+    background-image: url(../images/button_arrow_down.png);
+    width: 12px;
+    height: 30px;
+    top: 35px;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+  }
+}
+.button2:hover .button_arrow2 {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+}
+
+.button2:hover .button_arrow_down {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+}
+
+.footer_icons_wrap {
+  display: flex;
+  justify-content: end;
+  margin-right: 424px;
+
+  .footer_icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 245px;
+    margin-bottom: 8px;
+
+    .instagram {
+      background-image: url(../images/inst_default.png);
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      transition: background-image 300ms;
+    }
+    .instagram:hover {
+      background-image: url(../images/inst_hover.png);
+    }
+    .email {
+      background-image: url(../images/email_default.png);
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      transition: background-image 300ms;
+    }
+    .email:hover {
+      background-image: url(../images/email_hover.png);
+    }
+    .phone {
+      background-image: url(../images/phone_default.png);
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      transition: background-image 300ms;
+    }
+    .phone:hover {
+      background-image: url(../images/phone_hover.png);
+    }
+    .address {
+      background-image: url(../images/address_default.png);
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      transition: background-image 300ms;
+    }
+    .address:hover {
+      background-image: url(../images/address_hover.png);
+    }
+  }
+}
+
+.footer_wrap {
+  height: 192px;
+  background: #4b6049;
+  display: flex;
+  justify-content: center;
+  padding-top: 38px;
+  gap: 60px;
+
+  li {
+    color: #fffbf5;
+    font-size: 20px;
+    line-height: 150%;
+    margin-left: 0;
+    transition: margin-left 300ms;
+    width: 200px;
+  }
+  .li_wrap {
+    width: 270px;
+  }
+  // li:hover {
+  //   margin-left: 10px;
+  // }
+
+  a {
+    color: #fffbf5;
+    font-size: 20px;
+    line-height: 150%;
+    margin-left: 0;
+    transition: margin-left 300ms;
+  }
+  a:hover {
+    margin-left: 10px;
+  }
+}
+
+.payment_icon {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  position: absolute;
+  bottom: 0;
+  right: 424px;
+
+  .mastercard {
+    background-image: url(../images/mastercard_default.png);
+    width: 52px;
+    height: 32px;
+    transition: background-image 300ms;
+  }
+  .mastercard:hover {
+    background-image: url(../images/mastercard_hover.png);
+  }
+  .visa {
+    background-image: url(../images/visa_default.png);
+    width: 76px;
+    height: 25px;
+    transition: background-image 300ms;
+  }
+  .visa:hover {
+    background-image: url(../images/visa_hover.png);
+  }
+  .apay {
+    background-image: url(../images/apay_default.png);
+    width: 83px;
+    height: 34px;
+    transition: background-image 300ms;
+  }
+  .apay:hover {
+    background-image: url(../images/apay_hover.png);
+  }
+}
